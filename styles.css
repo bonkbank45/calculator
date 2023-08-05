@@ -1,0 +1,61 @@
+* {
+    font-size: 26px;
+}
+
+button {
+    border-radius: 250px;
+}
+
+.container-wrap {
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-contain {
+    width: 500px;
+    height: 800px;
+    border: 2px solid rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.display {
+    height: 300px;
+    text-align: right;
+}
+
+.row1,.row2,.row3,.row4,.row5 {
+    flex: 1;
+    display: flex;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+.row1 > button {
+    flex:1;
+}
+
+.row2 > button {
+    flex:1;
+}
+
+.row3 > button {
+    flex:1;
+}
+
+.row4 > button {
+    flex:1;
+}
+
+.row5 > button {
+    flex:1;
+}
+
+.row1 > button:first-child {
+    flex: 2;
+}
+
+.row5 > button:last-child {
+    flex: 2;
+}
