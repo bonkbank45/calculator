@@ -111,14 +111,18 @@ class Calculator {
     }
     backSpace() {
         //123
-        if (/^\d+$/g.test(display.textContent)) {
+        if (/^\d+[\d.]$/g.test(display.textContent) || /\d/.test(display.textContent)) {
+            this.currentValue = this.currentValue.replace(/.$/g, "");
+        }
+        //regex update currentValue for ( . ) 
+        if (/^\d+.\d+$/g.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
         //123+
         if (/\d+[+\-*\/]$/g.test(display.textContent)) {
             this.operator = this.operator.replace(/.$/g, "");
             this.operand1 = "";
-            this.currentValue = display.textContent.match(/[1-9]+/g).toString();
+            this.currentValue = display.textContent.match(/[1-9.]+/g).toString().replaceAll(",", "");
         }
         //123+123
         if (/\d+[+\-*\/]\d+/g.test(display.textContent)) {
@@ -143,11 +147,11 @@ class Calculator {
                 display.textContent += text;
                 return;
             }
-            if(display.textContent === "0") {
+            if(display.textContent === "0" && text != ".") {
                 display.textContent = text;
                 return;
             }
-            if(/\d+[+\-*\/]0/.test(display.textContent)) {
+            if(/\d+[+\-*\/]0$/.test(display.textContent) && text != ".") {
                 display.textContent = display.textContent.replace(/\d$/, text);
                 return;
             }
@@ -178,6 +182,7 @@ const mutiply = document.querySelector("#multiply");
 const divide = document.querySelector("#divide");
 const clear = document.querySelector("#clear");
 const backspace = document.querySelector("#backspace");
+const dot = document.querySelector("#dot");
 
 buttonsNumber.forEach((button) => {
     button.addEventListener("click", (button) => { calculator.numberEvent(button.target.value); });
@@ -190,3 +195,4 @@ mutiply.addEventListener("click", (button) => { calculator.updateOperator(button
 divide.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
 clear.addEventListener("click", () => { calculator.allClear(); });
 backspace.addEventListener("click", () => { calculator.backSpace(); } );
+dot.addEventListener("click", (button) => { calculator.numberEvent(button.target.value); });
