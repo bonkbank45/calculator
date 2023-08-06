@@ -109,6 +109,23 @@ class Calculator {
         this.clearOperand()
         this.currentValue = "";
     }
+    backSpace() {
+        //123
+        if (/^\d+$/g.test(display.textContent)) {
+            this.currentValue = this.currentValue.replace(/.$/g, "");
+        }
+        //123+
+        if (/\d+[+\-*\/]$/g.test(display.textContent)) {
+            this.operator = this.operator.replace(/.$/g, "");
+            this.operand1 = "";
+            this.currentValue = display.textContent.match(/[1-9]+/g).toString();
+        }
+        //123+123
+        if (/\d+[+\-*\/]\d+/g.test(display.textContent)) {
+            this.currentValue = this.currentValue.replace(/.$/g, "");
+        }
+        display.textContent = display.textContent.replace(/.$/g, "");
+    }
     updateOperator(operator) {
         if (!isAlreadyOperator(display.textContent) && display.textContent.length > 0) {
             this.operand1 = this.currentValue;
