@@ -4,6 +4,7 @@ class Calculator {
         this.operand2 = "";
         this.operator = "";
         this.currentValue = "";
+        this.completeCal = false;
     }
     add(a, b) {
         return a + b;
@@ -32,6 +33,12 @@ class Calculator {
         }
     }
     numberEvent(button) {
+        if (this.currentValue.length === 0 && button === "0") return 0;
+        if (this.completeCal === true && !isAlreadyOperator(display.textContent.toString())) { 
+            this.clear(); 
+            this.currentValue = ""; 
+            this.completeCal = false; 
+        };
         this.currentValue += button;
         this.updateDisplay(button);
     }
@@ -48,6 +55,7 @@ class Calculator {
         if (this.operator === "") return;
         this.operand2 = this.currentValue;
         this.currentValue = calculator.operate(Number(this.operand1), Number(this.operand2), this.operator);
+        this.completeCal = true;
         calculator.clear();
         calculator.updateDisplay(this.currentValue);
     }
