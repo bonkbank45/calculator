@@ -89,16 +89,6 @@ class Calculator {
             this.currentValue = "";
             this.completeCal = false;
         }
-        // check if already have number 0, u can't add more 0 number (because it 0)
-        if (this.currentValue === "0") {
-            if (button === "0")
-                return 0;
-            else {
-                this.currentValue = button;
-                this.updateDisplay(button, false);
-                return;
-            }
-        }
         this.currentValue += button;
         this.updateDisplay(button, false);
     }
@@ -128,13 +118,15 @@ class Calculator {
     }
     updateDisplay(text, hardUpdate) {
         if (hardUpdate === false) {
-            if(/^0/.test(display.textContent)) {
-                console.log("Hi!");
+            if(display.textContent === "0" && /[+\-*\/]/.test(text)) {
+                display.textContent += text;
+                return;
+            }
+            if(display.textContent === "0") {
                 display.textContent = text;
                 return;
             }
             if(/\d+[+\-*\/]0/.test(display.textContent)) {
-                console.log("Hi!2");
                 display.textContent = display.textContent.replace(/\d$/, text);
                 return;
             }
@@ -161,6 +153,8 @@ const display = document.querySelector(".display");
 const added = document.querySelector("#add");
 const equal = document.querySelector("#equal");
 const subbed = document.querySelector("#sub");
+const mutiply = document.querySelector("#multiply");
+const divide = document.querySelector("#divide");
 
 buttonsNumber.forEach((button) => {
     button.addEventListener("click", (button) => { calculator.numberEvent(button.target.value); });
@@ -169,3 +163,5 @@ buttonsNumber.forEach((button) => {
 added.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
 equal.addEventListener("click", () => { calculator.equalEvent(); });
 subbed.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
+mutiply.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
+divide.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
