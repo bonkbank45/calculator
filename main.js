@@ -85,7 +85,7 @@ class Calculator {
     numberEvent(button) {
         // if after calculate, u are clicking number (not operation!), it will clear text number display.
         if (this.completeCal === true && !isAlreadyOperator(display.textContent.toString())) { 
-            this.clear();
+            this.clearOperand();
             this.currentValue = "";
             this.completeCal = false;
         }
@@ -97,13 +97,17 @@ class Calculator {
         this.operand2 = this.currentValue;
         this.currentValue = calculator.operate(Number(this.operand1), Number(this.operand2), this.operator);
         this.completeCal = true;
-        calculator.clear();
-        calculator.updateDisplay(this.currentValue, false);
+        this.clearOperand();
+        this.updateDisplay(this.currentValue, false);
     }
-    clear() {
+    clearOperand() {
         display.textContent = "";
         this.operand1 = "";
         this.operand2 = "";
+    }
+    allClear() {
+        this.clearOperand()
+        this.currentValue = "";
     }
     updateOperator(operator) {
         if (!isAlreadyOperator(display.textContent) && display.textContent.length > 0) {
@@ -155,6 +159,8 @@ const equal = document.querySelector("#equal");
 const subbed = document.querySelector("#sub");
 const mutiply = document.querySelector("#multiply");
 const divide = document.querySelector("#divide");
+const clear = document.querySelector("#clear");
+const backspace = document.querySelector("#backspace");
 
 buttonsNumber.forEach((button) => {
     button.addEventListener("click", (button) => { calculator.numberEvent(button.target.value); });
@@ -165,3 +171,5 @@ equal.addEventListener("click", () => { calculator.equalEvent(); });
 subbed.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
 mutiply.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
 divide.addEventListener("click", (button) => { calculator.updateOperator(button.target.value); });
+clear.addEventListener("click", () => { calculator.allClear(); });
+backspace.addEventListener("click", () => { calculator.backSpace(); } );
