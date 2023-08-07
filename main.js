@@ -94,7 +94,7 @@ class Calculator {
     }
     removeLastCharacter() {
         //123 || single number
-        if (/^\d+[\d]$/g.test(display.textContent) || /[1-9]]/.test(display.textContent)) {
+        if (/^\d+[\d]$/g.test(display.textContent) || /(^|\D)\d(\D|$)]/.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
         //regex update currentValue for ( . ) 
@@ -120,7 +120,7 @@ class Calculator {
         if (/^0.[+\-*\/]0./g.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
-        if (this.isError === false) {
+        if (this.isError === false && this.isCompleteCal === false) {
             display.textContent = display.textContent.replace(/.$/g, "");
         }
     }
