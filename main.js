@@ -102,11 +102,11 @@ class Calculator {
         if (/^\d+.\d+$/g.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
-        //123+
-        if (/^\d+[+\-*\/.]$/g.test(display.textContent)) {
+        //123+ || -123-
+        if (/^(\d|-)+[+\-*\/.]$/g.test(display.textContent)) {
             this.operator = this.operator.replace(/.$/g, "");
             this.operand1 = "";
-            this.currentValue = display.textContent.match(/[1-9.]+/g).toString().replaceAll(",", "");
+            this.currentValue = display.textContent.match(/[0-9.]+/g).toString().replaceAll(",", "");
         }
         //0.+-*/
         if (/0.[+\-*\/.]$/g.test(display.textContent)) {
