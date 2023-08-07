@@ -87,6 +87,7 @@ class Calculator {
         this.operator = "";
     }
     allClear() {
+        this.isCompleteCal = false;
         this.isError = false;
         this.clearOperand()
         this.clearDisplay();
@@ -126,7 +127,7 @@ class Calculator {
     }
     updateOperator(operator) {
         if (this.isError === false) {
-            if (!this.isAlreadyOperator(display.textContent)) {
+            if (!this.isAlreadyOperator(display.textContent) && display.textContent !== "" ) {
                 this.operand1 = this.currentValue;
                 this.currentValue = "";
                 this.operator = operator;
