@@ -35,7 +35,7 @@ class Calculator {
     }
     addNum(button) {
         // if after calculate, u are clicking number (not operation!), it will clear text number display.
-        if (this.isCompleteCal === true && !isAlreadyOperator(display.textContent.toString())) { 
+        if (this.isCompleteCal === true && !this.isAlreadyOperator(display.textContent.toString())) { 
             this.clearOperand();
             this.clearDisplay();
             this.currentValue = "";
@@ -68,7 +68,7 @@ class Calculator {
     equalEvent() {
         if (this.operator === "" || this.currentValue === "" || this.operand1 === "") return 0;
         this.operand2 = this.currentValue;
-        this.currentValue = calculator.operate(Number(this.operand1), Number(this.operand2), this.operator).toString();
+        this.currentValue = this.operate(Number(this.operand1), Number(this.operand2), this.operator).toString();
         this.isCompleteCal = true;
         this.clearDisplay();
         this.clearOperand();
@@ -120,25 +120,25 @@ class Calculator {
         if (/^0.[+\-*\/]0./g.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
-        if (this.isError === false && this.isCompleteCal === false) {
+        if (this.isError === false) {
             display.textContent = display.textContent.replace(/.$/g, "");
         }
     }
     updateOperator(operator) {
         if (this.isError === false) {
-            if (!isAlreadyOperator(display.textContent) && display.textContent.length > 0) {
+            if (!this.isAlreadyOperator(display.textContent)) {
                 this.operand1 = this.currentValue;
                 this.currentValue = "";
                 this.operator = operator;
                 this.addCharToDisplay(this.operator, false);
             }
             // 12+ and click operator
-            if (isAlreadyOperator(display.textContent) && this.currentValue === "" && this.operand1 !== ""){
+            if (this.isAlreadyOperator(display.textContent) && this.currentValue === "" && this.operand1 !== ""){
                 this.operator = operator;
-                this.addCharToDisplay(changeAlreadyOperator(display.textContent.toString(),this.operator), true);
+                this.addCharToDisplay(this.changeAlreadyOperator(display.textContent.toString(),this.operator), true);
             }
             // 12+3 and click operator
-            if (isAlreadyOperator(display.textContent) && this.currentValue !== "" && this.operand1 !== ""){
+            if (this.isAlreadyOperator(display.textContent) && this.currentValue !== "" && this.operand1 !== ""){
                 this.equalEvent();
                 this.operand1 = this.currentValue;
                 this.currentValue = "";
@@ -169,29 +169,27 @@ class Calculator {
     clearDisplay() {
         display.textContent = "";
     }
+    isAlreadyOperator(value) {
+        if (value.match(/[\d.]+[+\-*\/]/g))
+            return true;
+        return false;
+    }
+    changeAlreadyOperator(text, operator) {
+        return text.replace(/[+\-*\/]$/g, operator);
+    }
     errorStateCheck(error) {
         if (error == "NaN") {
             display.textContent = "Result is undefined";
             this.isError = true;
             return true;
         }
-        if (error == "Infinity") {
+        if (error == "Infinity" || error == "-Infinity") {
             display.textContent = "Cannot divide by zero";
             this.isError = true;
             return true;
         }
         return false;
     }
-}
-
-function isAlreadyOperator(value) {
-    if (value.match(/[\d.]+[+\-*\/]/g))
-        return true;
-    return false;
-}
-
-function changeAlreadyOperator(text, operator) {
-    return text.replace(/[+\-*\/]/g, operator);
 }
 
 const calculator = new Calculator();
