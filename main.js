@@ -1,32 +1,11 @@
-/* ⠀⠀⠀⠀
-Created by bonkBANK (for The Odin Project)
-⠀⢀⠀⢀⣀⣠⣤⣤⣤⣤⣤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⣠⣤⣤⣤⣤⣀⠲⢦⣄⡀⠀⠀
-⡶⢟⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠰⣷⣷⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣬⡛⢷⣔
-⣾⡿⠟⠋⠉⠁⠀⡀⠀⠀⠀⠀⠈⠉⠉⠙⠛⢻⠛⠛⠋⠀⠀⠀⠀⠀⠀⠀⠈⠙⢛⣛⣛⣛⣛⣉⢉⣉⡀⠀⠀⠀⠀⠀⠈⠉⠛⢿⣷⣝
-⠃⠀⠀⠀⠀⠀⠀⣛⣛⣛⣛⣛⣛⢛⡛⠛⠛⠛⣰⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣌⠛⠛⢛⣛⣛⣛⣛⣛⣛⣛⣓⣀⠀⠀⠀⠀⠀⠈⢻
-⠀⠀⠀⢀⣤⡾⠛⢻⣿⣿⣿⡿⣿⡟⢻⣿⠳⠆⠘⣿⣦⠀⠀⠀⠀⠀⠀⠀⣰⣿⠁⠐⠛⣿⡟⢻⣿⣿⣿⣿⢿⣟⠛⠻⣦⣀⠀⠀⠀⠀
-⠀⠀⢴⠿⣧⣄⣀⣘⣿⣿⣿⣿⣿⡿⣀⡙⢷⠀⢀⡿⠁⠀⠀⠀⠀⠀⠀⠀⠈⢻⡖⠀⣾⣋⣀⣺⣿⣿⣿⣿⣿⣏⣀⣤⣴⠿⢷⠀⠀⠀
-⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠉⠙⠉⠉⠉⠉⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠆⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⠉⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠁⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠆⠀⠀⢀⣿⠁⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣶⠟⠁⠀⠀⠀⣾⠇⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣤⣤⣴⣶⣾⠿⠛⠋⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠟⠛⠛⠛⠛⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠋⠀⠀⠀⠀⠀⠀⠀
-*/
 class Calculator {
     constructor() {
         this.operand1 = "";
         this.operand2 = "";
         this.operator = "";
         this.currentValue = "";
-        this.completeCal = false;
+        this.isCompleteCal = false;
+        this.isError = false;
     }
     add(a, b) {
         return a + b;
@@ -56,42 +35,66 @@ class Calculator {
     }
     addNum(button) {
         // if after calculate, u are clicking number (not operation!), it will clear text number display.
-        if (this.completeCal === true && !isAlreadyOperator(display.textContent.toString())) { 
+        if (this.isCompleteCal === true && !isAlreadyOperator(display.textContent.toString())) { 
             this.clearOperand();
+            this.clearDisplay();
             this.currentValue = "";
-            this.completeCal = false;
+            this.isCompleteCal = false;
+            this.isError = false;
+        } 
+        if (this.isError === false) {
+            this.currentValue += button;
+            this.addCharToDisplay(button, false);
         }
-        this.currentValue += button;
-        this.addCharToDisplay(button, false);
     }
     addDecimalPoint(button){
-        // Check - it don't have another decimalpoint
+        // Check - it doesn't have another decimalpoint
         if (this.currentValue.match(/\./g)) {
             return;
         }
-        this.currentValue += button;
-        this.addCharToDisplay(button, false);
+        if (this.currentValue === "") {
+            this.currentValue = "0" + button;
+            this.addCharToDisplay(this.currentValue, false);
+            return;
+        }
+        if (this.isCompleteCal === true) {
+            this.addNum("0" + button);
+            return;
+        }
+        if (this.isError === false) {
+            this.addNum(button);
+        }
     }
     equalEvent() {
         if (this.operator === "" || this.currentValue === "" || this.operand1 === "") return 0;
         this.operand2 = this.currentValue;
-        this.currentValue = calculator.operate(Number(this.operand1), Number(this.operand2), this.operator);
-        this.completeCal = true;
+        this.currentValue = calculator.operate(Number(this.operand1), Number(this.operand2), this.operator).toString();
+        this.isCompleteCal = true;
+        this.clearDisplay();
         this.clearOperand();
+        this.clearOperator();
+        if (this.errorStateCheck(this.currentValue)){
+            this.isCompleteCal = true;
+            return 0;
+        }
         this.addCharToDisplay(this.currentValue, false);
     }
     clearOperand() {
-        display.textContent = "";
         this.operand1 = "";
         this.operand2 = "";
     }
+    clearOperator() {
+        this.operator = "";
+    }
     allClear() {
+        this.isError = false;
         this.clearOperand()
+        this.clearDisplay();
         this.currentValue = "";
     }
     removeLastCharacter() {
-        //123
-        if (/^\d+[\d.]$/g.test(display.textContent) || /\d/.test(display.textContent)) {
+        //123 || single number
+        if (/^\d+[\d]$/g.test(display.textContent) || /[1-9]]/.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
         //regex update currentValue for ( . ) 
@@ -99,26 +102,49 @@ class Calculator {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
         //123+
-        if (/\d+[+\-*\/]$/g.test(display.textContent)) {
+        if (/^\d+[+\-*\/.]$/g.test(display.textContent)) {
             this.operator = this.operator.replace(/.$/g, "");
             this.operand1 = "";
             this.currentValue = display.textContent.match(/[1-9.]+/g).toString().replaceAll(",", "");
+        }
+        //0.+-*/
+        if (/0.[+\-*\/.]$/g.test(display.textContent)) {
+            this.operand1 = "";
+            this.currentValue = display.textContent.match(/0/g).toString().replaceAll(",", "");
         }
         //123+123
         if (/\d+[+\-*\/]\d+/g.test(display.textContent)) {
             this.currentValue = this.currentValue.replace(/.$/g, "");
         }
-        display.textContent = display.textContent.replace(/.$/g, "");
+        //123+0.
+        if (/^0.[+\-*\/]0./g.test(display.textContent)) {
+            this.currentValue = this.currentValue.replace(/.$/g, "");
+        }
+        if (this.isError === false) {
+            display.textContent = display.textContent.replace(/.$/g, "");
+        }
     }
     updateOperator(operator) {
-        if (!isAlreadyOperator(display.textContent) && display.textContent.length > 0) {
-            this.operand1 = this.currentValue;
-            this.currentValue = "";
-            this.operator = operator;
-            this.addCharToDisplay(this.operator, false);
-        } else {
-            this.operator = operator;
-            this.addCharToDisplay(changeAlreadyOperator(display.textContent.toString(),this.operator), true);
+        if (this.isError === false) {
+            if (!isAlreadyOperator(display.textContent) && display.textContent.length > 0) {
+                this.operand1 = this.currentValue;
+                this.currentValue = "";
+                this.operator = operator;
+                this.addCharToDisplay(this.operator, false);
+            }
+            // 12+ and click operator
+            if (isAlreadyOperator(display.textContent) && this.currentValue === "" && this.operand1 !== ""){
+                this.operator = operator;
+                this.addCharToDisplay(changeAlreadyOperator(display.textContent.toString(),this.operator), true);
+            }
+            // 12+3 and click operator
+            if (isAlreadyOperator(display.textContent) && this.currentValue !== "" && this.operand1 !== ""){
+                this.equalEvent();
+                this.operand1 = this.currentValue;
+                this.currentValue = "";
+                this.operator = operator;
+                this.addCharToDisplay(this.operator,false);
+            }
         }
     }
     addCharToDisplay(text, hardUpdate) {
@@ -140,10 +166,26 @@ class Calculator {
         if (hardUpdate === true)
             display.textContent = text;
     }
+    clearDisplay() {
+        display.textContent = "";
+    }
+    errorStateCheck(error) {
+        if (error == "NaN") {
+            display.textContent = "Result is undefined";
+            this.isError = true;
+            return true;
+        }
+        if (error == "Infinity") {
+            display.textContent = "Cannot divide by zero";
+            this.isError = true;
+            return true;
+        }
+        return false;
+    }
 }
 
 function isAlreadyOperator(value) {
-    if (value.match(/\d+[+\-*\/]/g))
+    if (value.match(/[\d.]+[+\-*\/]/g))
         return true;
     return false;
 }
