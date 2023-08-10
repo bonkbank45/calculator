@@ -3,8 +3,16 @@
     font-family: 'PT Mono', monospace;
 }
 
+body {
+    background-color: rgb(49, 49, 49);
+}
+
 button {
     border-radius: 50%;
+}
+
+footer {
+    color: aliceblue;
 }
 
 .container-wrap {
@@ -16,7 +24,8 @@ button {
 .container-contain {
     width: 500px;
     height: 800px;
-    border: 2px solid rgb(0, 0, 0);
+    border: 5px solid rgb(224, 224, 224);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -26,6 +35,7 @@ button {
     height: 300px;
     text-align: right;
     word-wrap: break-word;
+    color: aliceblue;
 }
 
 .row1,.row2,.row3,.row4,.row5 {
