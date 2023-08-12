@@ -1,68 +1,99 @@
 * {
     font-size: 26px;
     font-family: 'PT Mono', monospace;
+    box-sizing: border-box;
 }
 
-body {
-    background-color: rgb(49, 49, 49);
+html, body {
+    margin: 0;
+    height: 100%;
+    background-color: #FFBFBF;
 }
 
 button {
     border-radius: 50%;
+    border: none;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background-color: #FFBFBF;
+}
+
+button:active {
+    background-color: white;
 }
 
 footer {
     color: aliceblue;
+    text-shadow: 3px 3px 0 #000;
+    text-align: center;
 }
 
 .container-wrap {
-    height: 1000px;
+    width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-contain {
-    width: 500px;
-    height: 800px;
+    width: 100%;
+    min-width: 400px;
+    height: 750px;
     border: 5px solid rgb(224, 224, 224);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 35px;
+    background-color: #FD558F;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.container-button {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .display {
-    height: 300px;
+    overflow: hidden;
+    padding: 5px;
+    font-size: 36px;
+    height: 200px;
     text-align: right;
     word-wrap: break-word;
     color: aliceblue;
+    background-color: #FFD76C;
+    border-radius: 10px;
+    border: 5px solid white;
+    color: white;
+    text-shadow:
+       3px 3px 0 #5a5a5a,
+      -1px -1px 0 #5a5a5a,  
+       1px -1px 0 #5a5a5a,
+      -1px 1px 0 #5a5a5a,
+       1px 1px 0 #5a5a5a;
 }
 
 .row1,.row2,.row3,.row4,.row5 {
     flex: 1;
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
-.row1 > button {
-    flex:1;
+.row1, .row5 {
+    gap: 15px;
 }
 
-.row2 > button {
-    flex:1;
-}
-
-.row3 > button {
-    flex:1;
-}
-
-.row4 > button {
-    flex:1;
-}
-
-.row5 > button {
-    flex:1;
-}
+.row1 > button { flex:1; }
+.row2 > button { flex:1; }
+.row3 > button { flex:1; }
+.row4 > button { flex:1; }
+.row5 > button { flex:1; }
 
 .row1 > button:first-child {
     border-radius: 40px;
@@ -70,8 +101,44 @@ footer {
 }
 
 .row5 > button:first-child {
+    background-color: #0070C3;
+    color: white;
+    border: 5px solid #FFFFFF;
     padding-left: 50px;
     text-align: left;
     border-radius: 40px;
     flex: 2;
+    transition: all 0.3s;
 }
+
+.row5 > button:first-child:hover {
+    background-color: #4698d6;
+}
+
+.row5 > button:first-child:active {
+    background-color: #0070C3;
+}
+
+.row5 > button:last-child {
+    background-color: #FF0D4E;
+    color: white;
+    border: 5px solid #FFFFFF;
+    transition: all 0.5s;
+}
+
+.row5 > button:last-child:hover {
+    background-color: #ff6e95;
+}
+
+.row5 > button:last-child:active {
+    background-color: #FF0D4E;
+}
+
+@media only screen and (min-width: 480px) {
+    .container-contain {
+      width: 500px;
+    }
+    .row1,.row2,.row3,.row4,.row5 {
+        gap: 31px;
+    }
+  }

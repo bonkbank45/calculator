@@ -8,18 +8,18 @@ class Calculator {
 
     add = (a, b) => a + b;
     substract = (a, b) => a - b;
-    multiply = (a, b) => a * b;
-    divide = (a, b) => a / b;
+        multiply = (a, b) => a * b;
+        divide = (a, b) => a / b;
 
-    #operate(a, b, operate) {
-        switch(operate) {
-            case "+":
-                return this.add(a,b);
-            case "-":
-                return this.substract(a,b);
-            case "*":
-                return this.multiply(a,b);
-            case "/":
+        #operate(a, b, operate) {
+            switch(operate) {
+                case "+":
+                    return this.add(a,b);
+                case "-":
+                    return this.substract(a,b);
+                case "*":
+                    return this.multiply(a,b);
+                case "/":
                 return this.divide(a,b);
             default:
                 console.warn("Invalid case!");
@@ -41,7 +41,7 @@ class Calculator {
     }
     onDecimalPointButtonClick(button){
         // Check - it doesn't have another decimalpoint
-        if (this.currentValue.match(/\./g)) {
+        if (this.#currentValue.match(/\./g)) {
             return;
         }
         if (this.#currentValue === "") {
